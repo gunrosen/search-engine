@@ -43,7 +43,7 @@ func CreateMapping(esClient *elasticsearch.Client) error {
 func IngestData(esClient *elasticsearch.Client) error {
 	games, err := getListInternal()
 	if err != nil {
-		fmt.Print("Get error when get internal list")
+		return err
 	}
 	var r []model.IndexData
 	for _, game := range games {
@@ -82,6 +82,9 @@ func getListInternal() ([]*model.Game, error) {
 	res, err := client.Do(req)
 	if err != nil {
 		return nil, err
+	}
+	if res.StatusCode != http.StatusOK {
+		return nil, fmt.Errorf("games: Get error when get internal list %s", url)
 	}
 
 	body, err := ioutil.ReadAll(res.Body)
