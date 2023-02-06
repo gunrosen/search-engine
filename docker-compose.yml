@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  elastic:
+    container_name: core_search
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.5.2
+    environment:
+      - xpack.security.enabled=false
+      - "ES_JAVA_OPTS=-Xms750m -Xmx1g"
+      - 'discovery.type=single-node'
+    networks:
+      - gamefi-search
+      
+networks:
+  gamefi-search:
+    driver: bridge

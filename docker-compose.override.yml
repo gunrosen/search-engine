@@ -1,0 +1,10 @@
+version: '3.8'
+services:
+  elastic:
+    ports:
+      - 9200:9200
+
+
+networks:
+  gamefi-search:
+    driver: bridge
