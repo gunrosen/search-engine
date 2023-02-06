@@ -6,5 +6,5 @@ services:
 
 
 networks:
-  gamefi-search:
+  gamefi-search-network:
     driver: bridge

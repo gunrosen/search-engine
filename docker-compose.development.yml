@@ -10,12 +10,12 @@ services:
     environment:
       - ELASTICSEARCH_HOSTS=http://core_search:9200
     networks:
-      - gamefi-search
+      - gamefi-search-network
     depends_on:
       - elastic
     ports:
       - 5601:5601
 
 networks:
-  gamefi-search:
+  gamefi-search-network:
     driver: bridge
