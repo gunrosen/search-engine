@@ -28,7 +28,7 @@ func main() {
 	}
 
 	app := &cli.App{
-		Name:  "Search",
+		Name:  "Ingest search data",
 		Usage: "GameFi.org Search",
 		Commands: []*cli.Command{
 			createIndexMappingCommand(),
@@ -78,11 +78,11 @@ func index() *cli.Command {
 			if !ok {
 				return errors.New("invalid Elasticsearch")
 			}
-			err := games.CreateMapping(es)
+			err := games.IngestData(es)
 			if err != nil {
 				return err
 			}
-			err = guilds.CreateMapping(es)
+			err = guilds.IngestData(es)
 			if err != nil {
 				return err
 			}
@@ -121,7 +121,7 @@ func indexGuildCommand() *cli.Command {
 				return errors.New("invalid Elasticsearch")
 			}
 
-			err := guilds.CreateMapping(es)
+			err := guilds.IngestData(es)
 			if err != nil {
 				return err
 			}

@@ -11,7 +11,7 @@ import (
 func RefineEditorJsText(str string) string {
 	str = strings.TrimPrefix(str, "\"")
 	str = strings.TrimSuffix(str, "\"")
-	str = strings.Replace(str, "\\", "", -1)
+	str = strings.Replace(str, "\\\"", "", -1)
 	str = strings.Replace(str, "\u00a0", "", -1) // remove &nbsp
 	str = TrimHTML(str)
 	return str
@@ -19,6 +19,9 @@ func RefineEditorJsText(str string) string {
 
 func MarshalEditorJs(str string) model.EditorJsModel {
 	str = RefineEditorJsText(str)
+	if str == "" {
+		return model.EditorJsModel{}
+	}
 	var jsonData model.EditorJsModel
 	err := json.Unmarshal([]byte(str), &jsonData)
 	if err != nil {

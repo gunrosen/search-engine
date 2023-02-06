@@ -1,5 +1,21 @@
 package model
 
+type Guild struct {
+	ID            string  `json:"id"`
+	Name          string  `json:"name"`
+	Slug          string  `json:"slug"`
+	Staffs        []Staff `json:"staffs"`
+	Regions       string  `json:"regions"`
+	MemberRegions string  `json:"member_regions"`
+	Languages     string  `json:"languages"`
+	Difference    string  `json:"difference"`
+	Introduction  string  `json:"introduction"`
+}
+
+type Staff struct {
+	Name string `json:"name"`
+}
+
 // -------------- ElasticSearch Model ------------
 const IndexNameGuild = "gamefi_guilds"
 
