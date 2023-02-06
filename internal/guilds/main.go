@@ -14,7 +14,7 @@ func CreateMapping(esClient *elasticsearch.Client) error {
 	indexName := model.IndexNameGuild
 	res, err := esClient.Indices.Create(
 		indexName,
-		esClient.Indices.Create.WithBody(strings.NewReader(model.Guild)),
+		esClient.Indices.Create.WithBody(strings.NewReader(model.GuildMappingType)),
 	)
 	if err != nil {
 		return err

@@ -1,25 +1,24 @@
 package model
 
-type IndexData struct {
-	Data       map[string]interface{}
-	DocumentID string
+type Game struct {
+	ID              string `json:"id"`
+	Name            string `json:"name"`
+	Slug            string `json:"slug"`
+	Excerpt         string `json:"excerpt"`
+	Description     string `json:"description"`
+	FeaturesText    string `json:"features_text"`
+	RoadmapText     string `json:"roadmap_text"`
+	WhitePaper      string `json:"white_paper"`
+	Introduction    string `json:"introduction"`
+	PlayMode        string `json:"play_mode"`
+	PlayToEarnModel string `json:"play_to_earn_model"`
+	Guideline       string `json:"guideline"`
 }
 
-type EditorJsModel struct {
-	Blocks []EditorJsModelBlocks `json:"blocks"`
-}
-
-type EditorJsModelBlocks struct {
-	Data EditorJsModelBlockText `json:"data"`
-}
-
-type EditorJsModelBlockText struct {
-	Text string `json:"text"`
-}
-
-const IndexNameGame = "gamefi_games"
-
-const Game = `
+// -------------- ElasticSearch Model ------------
+const (
+	IndexNameGame   = "gamefi_games"
+	GameMappingType = `
 {
   "settings": {
 	"index": {
@@ -169,3 +168,4 @@ const Game = `
   }
 }
 `
+)

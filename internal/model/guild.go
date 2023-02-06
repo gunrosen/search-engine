@@ -1,8 +1,9 @@
 package model
 
+// -------------- ElasticSearch Model ------------
 const IndexNameGuild = "gamefi_guilds"
 
-const Guild = `
+const GuildMappingType = `
 {
   "mappings": {
     "properties": {

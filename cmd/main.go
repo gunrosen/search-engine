@@ -101,7 +101,7 @@ func indexGameCommand() *cli.Command {
 			if !ok {
 				return errors.New("invalid Elasticsearch")
 			}
-			err := games.CreateMapping(es)
+			err := games.IngestData(es)
 			if err != nil {
 				return err
 			}
